@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ShowBooking.css";
 
-const API_BASE = "http://localhost:9000";
+const API_BASE = "https://events-be-awy8.onrender.com";
 
 const ShowBooking = () => {
   const [bookings, setBookings] = useState([]);
