@@ -10,11 +10,11 @@ function App() {
       <div className="app-container">
         <header className="hero">
           <div className="hero-content">
-            <p className="hero-eyebrow">Easy event bookings</p>
-            <h1>Book events, manage guests, and keep everything organized</h1>
+            <p className="hero-eyebrow">Easy event booking</p>
+            <h1>Book events, manage attendees, and stay organized</h1>
             <p className="hero-copy">
-              Use this clean booking app to register attendees, view reservations,
-              and update event details in one place.
+              A simple booking website for event registration and reservation management.
+              Add new bookings, view existing attendees, and update records in one place.
             </p>
           </div>
         </header>

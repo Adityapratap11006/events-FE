@@ -6,7 +6,6 @@ const API_BASE = "https://events-be-awy8.onrender.com";
 
 const ShowBooking = () => {
   const [bookings, setBookings] = useState([]);
-
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [name, setName] = useState("");
@@ -63,40 +62,49 @@ const ShowBooking = () => {
 
   return (
     <div className="records-container">
-      <h2>All Event Bookings</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookings.length > 0 ? (
-            bookings.map((booking) => (
-              <tr key={booking._id || booking.name}>
-                <td>{booking.name}</td>
-                <td>{booking.event}</td>
-                <td>{formatTime(booking.time)}</td>
-                <td>{booking.phone}</td>
-                <td>
-                  <div className="action-buttons">
-                    <button className="btn-update" onClick={() => openModal(booking)}>Update</button>
-                    <button className="btn-delete" onClick={() => handleDelete(booking._id)}>Delete</button>
-                  </div>
-                </td>
-              </tr>
-            ))
-          ) : (
+      <div className="records-card">
+        <h2>All Bookings</h2>
+        <p className="records-subtitle">Manage your event reservations here.</p>
+        <div className="table-wrapper">
+          <table>
+          <thead>
             <tr>
-              <td colSpan="5">No bookings found</td>
+              <th>Name</th>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Phone</th>
+              <th>Actions</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <tr key={booking._id || booking.name}>
+                  <td>{booking.name}</td>
+                  <td>{booking.event}</td>
+                  <td>{formatTime(booking.time)}</td>
+                  <td>{booking.phone}</td>
+                  <td>
+                    <div className="action-buttons">
+                      <button className="btn-update" onClick={() => openModal(booking)}>
+                        Update
+                      </button>
+                      <button className="btn-delete" onClick={() => handleDelete(booking._id)}>
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5">No bookings found.</td>
+              </tr>
+            )}
+          </tbody>
+          </table>
+        </div>
+      </div>
 
       {showModal && (
         <div className="modal-overlay">
@@ -131,8 +139,12 @@ const ShowBooking = () => {
                 required
               />
               <div className="modal-actions">
-                <button type="submit" className="btn-update">Save</button>
-                <button type="button" className="btn-delete" onClick={closeModal}>Cancel</button>
+                <button type="submit" className="btn-update">
+                  Save
+                </button>
+                <button type="button" className="btn-delete" onClick={closeModal}>
+                  Cancel
+                </button>
               </div>
             </form>
           </div>

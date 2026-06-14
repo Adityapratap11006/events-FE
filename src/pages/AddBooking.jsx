@@ -10,9 +10,10 @@ const AddBooking = () => {
   const [time, setTime] = useState("");
   const [phone, setPhone] = useState("");
 
-  let handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${API_BASE}/add`, { name, event, time, phone })
+    axios
+      .post(`${API_BASE}/add`, { name, event, time, phone })
       .then(() => {
         alert("Booking successful!");
         setName("");
@@ -27,35 +28,38 @@ const AddBooking = () => {
 
   return (
     <div className="form-container">
-      <h2>Register for Event</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          placeholder="Event Name"
-          value={event}
-          onChange={(e) => setEvent(e.target.value)}
-          required
-        />
-        <input
-          type="datetime-local"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
-        <button type="submit">Book</button>
-      </form>
+      <div className="form-card">
+        <h2>Reserve Your Spot</h2>
+        <p className="form-subtitle">Enter your details to book the event.</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            placeholder="Event Name"
+            value={event}
+            onChange={(e) => setEvent(e.target.value)}
+            required
+          />
+          <input
+            type="datetime-local"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+          <button type="submit">Confirm Booking</button>
+        </form>
+      </div>
     </div>
   );
 };
